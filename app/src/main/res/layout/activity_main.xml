@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textCity" />
 
     <ListView
+        android:id="@+id/listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"

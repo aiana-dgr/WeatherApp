@@ -112,7 +112,6 @@ public class WeatherDataLoader {
             WeatherConditions conditions = getWeather(city);
             handler.handleResult(conditions);
         } catch (IOException e) {
-            // TODO: Decide what to do here...
             e.printStackTrace();
             handler.handleResult(null);
         }
@@ -123,7 +122,6 @@ public class WeatherDataLoader {
             WeatherConditions conditions = getWeather(city);
             return conditions;
         } catch (IOException e) {
-            // TODO: Decide what to do here...
             e.printStackTrace();
             return null;
         }
@@ -152,7 +150,6 @@ public class WeatherDataLoader {
             WeatherForecast forecast = getForecast(city);
             handler.handleResult(forecast);
         } catch (IOException e) {
-            // TODO: Decide what to do here...
             e.printStackTrace();
             handler.handleResult(null);
         }

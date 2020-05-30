@@ -2,20 +2,19 @@ package com.example.weatherapp;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class WeatherForecast {
-
     @SerializedName("list")
-    private List<WeatherForecastItem> items;
+    private List<WeatherForecastItem> forecastItems;
 
-    public String toString() {
-        StringBuilder result = new StringBuilder();
+    public List<WeatherForecastItem> getForecastItems() {
+        return forecastItems;
+    }
 
-        for (WeatherForecastItem item : items) {
-            result.append(item.toString() + "\n");
-        }
-
-        return result.toString();
+    public void setForecastItems(List<WeatherForecastItem> forecastItems) {
+        this.forecastItems = forecastItems;
     }
 }
