@@ -2,8 +2,6 @@ package com.example.weatherapp;
 
 import android.util.Log;
 
-import java.io.IOException;
-
 public class GetForecast implements Runnable {
     private MainActivity activity;
     private String city;
@@ -22,26 +20,11 @@ public class GetForecast implements Runnable {
     public void run() {
         // This is the function that will be run on the background thread.
         WeatherDataLoader loader = new WeatherDataLoader();
-
-        // Now, call the function that will get the results from the API and then when it is done,
-        // it will call the "handleResult" function on this new WeatherConditionsResultHandler
-        // object that we are giving it.
-
-        WeatherForecast forecast = null;
-        try {
-            forecast = loader.getForecast(city);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        final WeatherForecast finalForecast = forecast;
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                // This is code that will now run on the UI thread. Call the function in
-                // MainActivity that will update the UI correctly.
-                activity.handleWeatherForecastResult(finalForecast);
-            }
+        loader.getForecastAndPostResults(city, (forecast) -> {
+            activity.runOnUiThread(() -> {
+                // forecast contains the results of the API call
+                activity.handleWeatherForecastResult(forecast);
+            });
         });
     }
 }
